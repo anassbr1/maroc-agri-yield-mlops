@@ -1,0 +1,41 @@
+# --- Data & Manipulation ---
+pandas==2.2.2
+polars==1.8.2
+numpy==1.26.4
+pyarrow==17.0.0
+
+# --- Ingestion API / Scraping ---
+requests==2.32.3
+openmeteo-requests==1.2.0
+requests-cache==1.2.1
+retry-requests==2.0.0
+beautifulsoup4==4.12.3
+lxml==5.3.0
+
+# --- ML ---
+scikit-learn==1.5.2
+lightgbm==4.5.0
+xgboost==2.1.1
+
+# --- MLOps ---
+mlflow==2.16.2
+dvc==3.55.2
+evidently==0.4.33
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# --- API ---
+fastapi==0.115.0
+uvicorn[standard]==0.31.1
+
+# --- Qualité & Tests ---
+pytest==8.3.3
+pytest-cov==6.0.0
+ruff==0.6.9
+pre-commit==3.8.0
+
+# --- Utils ---
+python-dotenv==1.0.1
+pyyaml==6.0.2
+loguru==0.7.2
+tqdm==4.66.5

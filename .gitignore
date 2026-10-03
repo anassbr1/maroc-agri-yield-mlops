@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# DVC (les .dvc files sont commit, PAS les données)
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
+!data/**/*.dvc
+
+# Models
+models_store/
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.onnx
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
+# DVC internal
+.dvc/tmp/
+.dvc/cache/
