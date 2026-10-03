@@ -1,0 +1,6 @@
+outs:
+- md5: 5323d22ecb7d5a59696db3fea69ea77f.dir
+  size: 3493
+  nfiles: 1
+  hash: md5
+  path: prix

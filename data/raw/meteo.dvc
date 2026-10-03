@@ -1,0 +1,6 @@
+outs:
+- md5: da3199c699a001e9fe52ce7d091f95a9.dir
+  size: 1884443
+  nfiles: 1
+  hash: md5
+  path: meteo
