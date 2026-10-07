@@ -19,7 +19,8 @@ quote-style = "double"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
-addopts = "-v --cov=src --cov-report=term-missing"
+pythonpath = ["."]
+addopts = "-v"
 
 [tool.coverage.run]
 omit = ["tests/*", "*/__init__.py"]

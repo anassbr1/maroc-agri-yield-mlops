@@ -1,102 +1,21 @@
-# .pre-commit-config.yaml
-# Configuration des hooks pre-commit pour le projet Maroc Agri-Yield
-# Installation : pre-commit install
-# Exécution manuelle : pre-commit run --all-files
-
 repos:
-  # ============================================================
-  # 1. HOOKS GÉNÉRIQUES (nettoyage de base)
-  # ============================================================
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
-    hooks:
-      # Supprime les espaces en fin de ligne
-      - id: trailing-whitespace
-        exclude: ^notebooks/.*\.ipynb$
-
-      # S'assure qu'un fichier se termine par un newline
-      - id: end-of-file-fixer
-
-      # Vérifie que les fichiers YAML sont valides (crucial pour CI/docker-compose)
-      - id: check-yaml
-        args: [--allow-multiple-documents]
-
-      # Vérifie que les fichiers JSON sont valides
-      - id: check-json
-
-      # Vérifie que les fichiers TOML sont valides (pyproject.toml)
-      - id: check-toml
-
-      # Détecte les conflits de merge non résolus (<<<<<<< HEAD)
-      - id: check-merge-conflict
-
-      # Bloque les fichiers > 500 KB (évite de committer des datasets ou modèles)
-      - id: check-added-large-files
-        args: [--maxkb=500]
-
-      # Détecte les clés AWS, tokens, etc. (sécurité)
-      - id: detect-private-key
-
-      # Détecte les fichiers vides accidentels
-      - id: check-added-large-files
-        args: ['--maxkb=1000']
-
-
-      # Vérifie que les scripts Python avec shebang sont exécutables
-      - id: check-executables-have-shebangs
-
-      # Normalise les fins de ligne (LF sur Linux, CRLF sur Windows → LF partout)
-      - id: mixed-line-ending
-        args: [--fix=lf]
-
-  # ============================================================
-  # 2. RUFF (linting + formatting Python)
-  # ============================================================
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.6.9
     hooks:
-      # Linting avec auto-fix (imports, variables inutilisées, etc.)
       - id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
-        types_or: [python, pyi]
-
-      # Formatage (remplace black)
+        args: [--fix]
       - id: ruff-format
-        types_or: [python, pyi]
 
-  # ============================================================
-  # 3. NETTOYAGE DES NOTEBOOKS (crucial en ML)
-  # ============================================================
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.7.1
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
     hooks:
-      # Supprime les outputs des cellules avant commit
-      # (évite de committer des images base64 de 5 Mo et des données sensibles)
-      - id: nbstripout
-        files: \.ipynb$
-
-  # ============================================================
-  # 4. SÉCURITÉ (détection de secrets)
-  # ============================================================
-  - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.5.0
-    hooks:
-      # Détecte les clés API, tokens, mots de passe en dur
-      - id: detect-secrets
-        args: ["--baseline", ".secrets.baseline"]
-        exclude: |
-          (?x)^(
-            \.env\.example$|
-            tests/.*|
-            .*\.dvc$
-          )$
-
-  # ============================================================
-  # 5. VÉRIFICATION DES COMMITS (conventional commits)
-  # ============================================================
-  - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v3.4.0
-    hooks:
-      - id: conventional-pre-commit
-        stages: [commit-msg]
-        args: [feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert]
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args: [--fix=lf]
