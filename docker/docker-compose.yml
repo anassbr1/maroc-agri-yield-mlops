@@ -1,0 +1,13 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://host.docker.internal:5000
+      - MLFLOW_MODEL_NAME=agri_yield_model
+      - MLFLOW_MODEL_STAGE=Production
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

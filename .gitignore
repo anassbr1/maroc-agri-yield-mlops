@@ -61,3 +61,5 @@ htmlcov/
 # DVC internal
 .dvc/tmp/
 .dvc/cache/
+
+reports/
