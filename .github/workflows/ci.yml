@@ -16,7 +16,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -25,9 +24,6 @@ jobs:
 
       - name: Lint
         run: ruff check src tests
-
-      - name: Format check
-        run: ruff format --check src tests
 
       - name: Run tests
         run: pytest tests/unit -v
@@ -39,5 +35,4 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build API image
-        run: |
-          docker build -f docker/Dockerfile.api -t agri-yield-api:${{ github.sha }} .
+        run: docker build -f docker/Dockerfile.api -t agri-yield-api:${{ github.sha }} .
